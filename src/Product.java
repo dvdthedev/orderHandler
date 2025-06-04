@@ -1,10 +1,13 @@
+import java.math.BigDecimal;
+
 public class Product {
     private String name;
-    private Double total;
+    private BigDecimal total;
 
     public Product(String name, Double value, int quantity) {
+        BigDecimal valueConvert = BigDecimal.valueOf((Double) value);
         this.name = name;
-        this.total = value * quantity;
+        this.total = BigDecimal.valueOf((Double) value).multiply(BigDecimal.valueOf(quantity));
 
     }
 
@@ -12,7 +15,15 @@ public class Product {
         return name;
     }
 
-    public Double getTotal() {
+    public BigDecimal getTotal() {
         return total;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", total=" + total +
+                '}';
     }
 }
